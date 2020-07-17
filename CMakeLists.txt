@@ -32,11 +32,13 @@ configure_file(pkgconfig/egl.pc.cmake egl.pc @ONLY)
 configure_file(pkgconfig/gbm.pc.cmake gbm.pc @ONLY)
 configure_file(pkgconfig/glesv1_cm.pc.cmake glesv1_cm.pc @ONLY)
 configure_file(pkgconfig/glesv2.pc.cmake glesv2.pc @ONLY)
+configure_file(pkgconfig/OpenCL.pc.cmake OpenCL.pc @ONLY)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/egl.pc
               ${CMAKE_CURRENT_BINARY_DIR}/gbm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv1_cm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv2.pc
+              ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 install(FILES include/gbm.h
@@ -47,6 +49,7 @@ install(DIRECTORY include/EGL
                   include/GLES2
                   include/GLES3
                   include/KHR
+                  include/CL
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 macro(install_symlink filepath sympath)
@@ -71,4 +74,6 @@ if(MALI_FILE_LENGTH GREATER 0)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLESv2.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLESv2.so.2)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libgbm.so)
+    install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libMaliOpenCL.so)
+    install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libOpenCL.so)
 endif()
