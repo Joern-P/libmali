@@ -38,7 +38,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/egl.pc
               ${CMAKE_CURRENT_BINARY_DIR}/gbm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv1_cm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv2.pc
-              ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc.cmake
+              ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 install(FILES include/gbm.h
