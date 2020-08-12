@@ -5,7 +5,7 @@ includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
 
 Name: egl
 Description: Mali EGL library
-Version: 1.4
+Version: 7.10
 Libs: -L${libdir} -lEGL
 Libs.private: -lm -lpthread
 Cflags: -I${includedir}
