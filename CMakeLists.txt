@@ -21,6 +21,7 @@ foreach(VARIANT IN LISTS MALI_VARIANT)
         list(APPEND MALI_FILE libmali-midgard-t76x-r14p0-r1p0-gbm.so)
     elseif(VARIANT STREQUAL "t860")
         list(APPEND MALI_FILE libmali-midgard-t86x-r18p0-gbm.so)
+        list(APPEND MALI_FILE libGL.so)
     elseif(VARIANT STREQUAL "g31")
         list(APPEND MALI_FILE libmali-bifrost-g31-r16p0-gbm.so)
     elseif(VARIANT STREQUAL "g52")
@@ -33,18 +34,21 @@ configure_file(pkgconfig/gbm.pc.cmake gbm.pc @ONLY)
 configure_file(pkgconfig/glesv1_cm.pc.cmake glesv1_cm.pc @ONLY)
 configure_file(pkgconfig/glesv2.pc.cmake glesv2.pc @ONLY)
 configure_file(pkgconfig/OpenCL.pc.cmake OpenCL.pc @ONLY)
+configure_file(pkgconfig/gl4es.pc.cmake gl4es.pc @ONLY)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/egl.pc
               ${CMAKE_CURRENT_BINARY_DIR}/gbm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv1_cm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv2.pc
               ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc
+              ${CMAKE_CURRENT_BINARY_DIR}/gl4es.pc
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 install(FILES include/gbm.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-install(DIRECTORY include/EGL
+install(DIRECTORY include/EGL 
+		include/GL
                   include/GLES
                   include/GLES2
                   include/GLES3
@@ -80,4 +84,5 @@ if(MALI_FILE_LENGTH GREATER 0)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libOpenCL.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libMaliOpenCL.so.1)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libOpenCL.so.1)
+    install_symlink(libGL.so ${CMAKE_INSTALL_LIBDIR}/libGL.so.1)
 endif()
