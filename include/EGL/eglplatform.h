@@ -75,6 +75,7 @@ typedef struct wl_egl_window  *EGLNativeWindowType;
 
 #else
 
+#include <gbm.h>
 struct gbm_device;
 struct gbm_bo;
 
